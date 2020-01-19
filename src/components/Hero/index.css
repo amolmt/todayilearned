@@ -1,0 +1,41 @@
+.right {
+  width: 144px;
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  right: 0px;
+  z-index: 100;
+  background: rgb(11, 14, 17);
+}
+.left {
+  width: 144px;
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  left: 0px;
+  z-index: 100;
+  background: rgb(11, 14, 17);
+}
+
+.main {
+  color: #fff;
+  height: 100%;
+  -webkit-box-align: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.parent {
+  background-color: rgb(11, 14, 17);
+  position: relative;
+  height: 360px;
+}
+
+.title {
+  color: #fff;
+  letter-spacing: 1.5px;
+}
+.desc {
+  letter-spacing: 1.5px;
+}

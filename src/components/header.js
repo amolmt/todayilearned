@@ -1,42 +1,50 @@
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import { Layout, Avatar, Badge, Button } from "antd"
 import PropTypes from "prop-types"
 import React from "react"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+const { Header } = Layout
 
-Header.propTypes = {
+const HeaderCustom = ({ siteTitle }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      reddit {
+        accountsActive
+      }
+    }
+  `)
+
+  const { accountsActive } = data.reddit
+
+  return (
+    <Header>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Link>{siteTitle}</Link>
+        {/* <div>
+          <Button icon="lock">Login</Button>
+          <span style={{ marginLeft: 10 }}>
+            <Badge count={accountsActive}>
+              <Avatar shape="square" icon="user" />
+            </Badge>
+          </span>
+        </div> */}
+      </div>
+    </Header>
+  )
+}
+
+HeaderCustom.propTypes = {
   siteTitle: PropTypes.string,
 }
 
-Header.defaultProps = {
+HeaderCustom.defaultProps = {
   siteTitle: ``,
 }
 
-export default Header
+export default HeaderCustom
